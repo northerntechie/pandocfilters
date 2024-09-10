@@ -14,7 +14,7 @@ import sys
 from subprocess import call
 from tempfile import mkdtemp
 
-from pandocfilters import toJSONFilter, Para, Image, get_filename4code, get_extension
+from . import pandocfilters
 
 
 def tikz2image(tikz_src, filetype, outfile):
@@ -49,6 +49,11 @@ def tikz(key, value, format, _):
                 tikz2image(code, filetype, outfile)
                 sys.stderr.write('Created image ' + src + '\n')
             return Para([Image(['', [], []], [], [src, ""])])
+
+
+def main():
+    pandocfilters.toJSONFilter(tikz)
+
 
 if __name__ == "__main__":
     toJSONFilter(tikz)

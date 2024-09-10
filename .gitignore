@@ -12,3 +12,4 @@ tmp_ly/
 examples/lyluatex.lua
 examples/lyluatex.sty
 examples/plantuml.jar
+venv/

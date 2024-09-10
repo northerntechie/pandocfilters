@@ -6,7 +6,7 @@ theorem environments in LaTeX output, and to numbered theorems
 in HTML output.
 """
 
-from pandocfilters import toJSONFilter, RawBlock, Div
+from . import pandocfilters
 
 theoremcount = 0
 
@@ -36,6 +36,11 @@ def theorems(key, value, format, meta):
                 newcontents = [html('<dt>Theorem ' + str(theoremcount) + '</dt>'),
                                html('<dd>')] + contents + [html('</dd>\n</dl>')]
                 return Div([ident, classes, kvs], newcontents)
+
+
+def main():
+    toJSONFilter(theorems)
+
 
 if __name__ == "__main__":
     toJSONFilter(theorems)
